@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import Child from './components/Child'
 
 function App() {
+  const [count, setCount] = useState(0);
+  const Increment = () => {
+    console.log('Incremented');
+    setCount(count + 1);
+  }
+  const Decrement = () => {
+    console.log('Decremented');
+    setCount(count - 1);
+  }
+  const Reset = () => {
+    console.log('Reset');
+    setCount(0);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Parent Component</h1>
+      {count}
+      <Child Increment={Increment} Decrement={Decrement} Reset={Reset} />
     </div>
   );
 }
