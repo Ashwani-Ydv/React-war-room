@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
-import Child from './components/Child'
+import { useState } from 'react';
+// import Child from './components/Child'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,9 +9,12 @@ function App() {
     setCount(count + 1);
   }
   const Decrement = () => {
-    console.log('Decremented');
-    setCount(count - 1);
+    if (count >= 1) {
+      console.log('Decremented');
+      setCount(count - 1);
+    }
   }
+
   const Reset = () => {
     console.log('Reset');
     setCount(0);
@@ -20,8 +22,9 @@ function App() {
   return (
     <div className="App">
       <h1>Parent Component</h1>
-      {count}
-      <Child Increment={Increment} Decrement={Decrement} Reset={Reset} />
+      <button onClick={Decrement} >Decrement</button> {count} <button onClick={Increment} >Increment</button>
+      <button onClick={Reset} >Reset</button>
+      {/* <Child Increment={Increment} Decrement={Decrement} Reset={Reset} /> */}
     </div>
   );
 }
